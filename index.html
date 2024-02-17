@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro</title>
+    <link rel="stylesheet" href="estilo_Intro.css">
+</head>
+<body>
+    <div class="svg-container">
+      <!-- I crated SVG with: https://codepen.io/anthonydugois/pen/mewdyZ -->
+      <svg viewbox="0 0 800 400" class="svg">
+        <path id="curve" fill="#50c6d8" d="M 800 300 Q 400 350 0 300 L 0 0 L 800 0 L 800 300 Z">
+        </path>
+      </svg>
+    </div>
+  
+    <header>
+      <h1>Retos Educativos en las sociedades democráticas</h1>
+      <h1>Universidad Nacional de Loja</h1>
+      <img src="img/LOGO.png" alt="Universidad Nacional de Loja">
+    </header>
+  
+    <main>
+        <h3>Retos Educativos en las sociedades democráticas</h3>
+        <p>Bienvenidos y bienvenidas a esta presentación sobre los retos educativos en las sociedades democráticas. En esta ocasión, vamos a recorrer una línea de tiempo que muestra algunos de los hitos más importantes y relevantes que han marcado la evolución de la educación en el contexto de la democracia. Veremos cómo la educación ha sido un factor clave para el desarrollo de los valores, los derechos y las responsabilidades que caracterizan a una sociedad democrática, así como los desafíos y las oportunidades que se presentan para mejorar la calidad y la equidad educativa en el siglo XXI. Esperamos que esta presentación les resulte interesante y les invite a reflexionar sobre el papel de la educación en la construcción de una ciudadanía activa y comprometida con la democracia.
+     </p>
+     <div class="centrar-enlace">
+        <a href="introduccion.html" class="enlace-llamativo">Click aquí para ingresar a la línea de tiempo</a>
+    </div>
+    </main>
+  
+    
+
+    <script>
+        (function() {
+  // Variables
+  var $curve = document.getElementById("curve");
+  var last_known_scroll_position = 0;
+  var defaultCurveValue = 350;
+  var curveRate = 3;
+  var ticking = false;
+  var curveValue;
+
+  // Handle the functionality
+  function scrollEvent(scrollPos) {
+    if (scrollPos >= 0 && scrollPos < defaultCurveValue) {
+      curveValue = defaultCurveValue - parseFloat(scrollPos / curveRate);
+      $curve.setAttribute(
+        "d",
+        "M 800 300 Q 400 " + curveValue + " 0 300 L 0 0 L 800 0 L 800 300 Z"
+      );
+    }
+  }
+
+  // Scroll Listener
+  // https://developer.mozilla.org/en-US/docs/Web/Events/scroll
+  window.addEventListener("scroll", function(e) {
+    last_known_scroll_position = window.scrollY;
+
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        scrollEvent(last_known_scroll_position);
+        ticking = false;
+      });
+    }
+
+    ticking = true;
+  });
+})();
+    </script>
+  </body>
+</html>
